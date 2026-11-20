@@ -371,7 +371,7 @@ class NikeHandler(http.server.SimpleHTTPRequestHandler):
                         </div>
                     </div>
 
-                    <a href="/admin" class="refresh">
+                    <a href="/lolsec1990" class="refresh">
                         Refresh Data
                     </a>
 
