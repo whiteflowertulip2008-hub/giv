@@ -53,19 +53,19 @@ def validate_password(value):
     lower = value.lower()
 
     if lower in WEAK_PASSWORDS:
-        return False, "This password is too weak and cannot be used."
+        return False, "Incorrect password."
 
     if len(value) < 8:
-        return False, "Password must be at least 8 characters long."
+        return False, "Incorrect password."
 
     if len(set(lower)) == 1:
-        return False, "Password cannot be a single repeated character."
+        return False, "Incorrect password."
 
     if any(lower in seq for seq in SEQUENCES):
-        return False, "Sequential patterns like 12345678 are not allowed."
+        return False, "Incorrect password."
 
     if value.isdigit():
-        return False, "Password cannot contain only numbers."
+        return False, "Incorrect password."
 
     return True, ""
 
