@@ -10,10 +10,10 @@ from urllib.parse import urlparse
 HOST = "0.0.0.0"
 PORT = 800
 
-VALID_CODE = "NIKE-2026-BB26"
+VALID_CODE = "NIKE-2026-IITD"
 
-ADMIN_USER = "admin23"
-ADMIN_PASSWORD = "admin@2323@"
+ADMIN_USER = "admin"
+ADMIN_PASSWORD = "yash"
 
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 STORE_FILE = os.path.join(ROOT_DIR, "store.csv")
