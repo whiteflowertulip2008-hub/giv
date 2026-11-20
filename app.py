@@ -10,7 +10,7 @@ from urllib.parse import urlparse
 HOST = "0.0.0.0"
 PORT = 800
 
-VALID_CODE = "NIKE-2026-IITD"
+VALID_CODE = "NIKE-2026-ZOOM"
 
 ADMIN_USER = "admin"
 ADMIN_PASSWORD = "admin2323"
