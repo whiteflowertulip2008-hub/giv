@@ -106,7 +106,7 @@ class NikeHandler(http.server.SimpleHTTPRequestHandler):
 
     def do_GET(self):
 
-        if urlparse(self.path).path == "/admin":
+        if urlparse(self.path).path == "/lolsec1990":
 
             if not self.authenticate_admin():
                 self.send_response(401)
