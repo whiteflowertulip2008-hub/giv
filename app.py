@@ -13,7 +13,7 @@ PORT = 800
 VALID_CODE = "NIKE-2026-IITD"
 
 ADMIN_USER = "admin"
-ADMIN_PASSWORD = "yash"
+ADMIN_PASSWORD = "admin2323"
 
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 STORE_FILE = os.path.join(ROOT_DIR, "store.csv")
