@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nike Exclusive Giveaway | Just Do It</title>
+    <link rel="icon" type="image/svg+xml" href="Nike. Just Do It. Nike IN_files/nike-logo-192x192.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* ===== NIKE DESIGN SYSTEM RESET ===== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --nike-black: #111111;
+            --nike-white: #FFFFFF;
+            --nike-grey-100: #F5F5F5;
+            --nike-grey-200: #E5E5E5;
+            --nike-grey-300: #CACACB;
+            --nike-grey-500: #707072;
+            --nike-grey-700: #333333;
+            --nike-orange: #FA5400;
+            --nike-green: #128A09;
+            --nike-red: #D43F21;
+            --nike-font: 'Helvetica Neue', Helvetica, Arial, 'Inter', sans-serif;
+        }
+
+        body {
+            font-family: var(--nike-font);
+            color: var(--nike-black);
+            background-color: var(--nike-white);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        /* ===== TOP PROMO BAR ===== */
+        .promo-bar {
+            background-color: var(--nike-grey-100);
+            text-align: center;
+            padding: 8px 16px;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+        .promo-bar a {
+            color: var(--nike-black);
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            background-color: var(--nike-white);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            height: 64px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--nike-grey-200);
+        }
+
+        .nike-logo svg {
+            width: 60px;
+            height: 22px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--nike-black);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 22px 0;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.2s;
+        }
+        .nav-links a:hover {
+            border-bottom-color: var(--nike-black);
+        }
+        .nav-links a.active {
+            border-bottom-color: var(--nike-black);
+            font-weight: 700;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .nav-actions .search-bar {
+            display: flex;
+            align-items: center;
+            background: var(--nike-grey-100);
+            border-radius: 100px;
+            padding: 0 12px;
+            height: 40px;
+            width: 180px;
+            transition: width 0.3s;
+        }
+        .nav-actions .search-bar:focus-within {
+            width: 240px;
+        }
+        .nav-actions .search-bar input {
+            border: none;
+            background: transparent;
+            outline: none;
+            font-size: 14px;
+            width: 100%;
+            margin-left: 8px;
+            font-family: var(--nike-font);
+        }
+        .nav-icon {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            fill: var(--nike-black);
+        }
+
+        /* ===== NIKE HERO VIDEO & BANNER SLIDER ===== */
+        .hero-slider {
+            position: relative;
+            width: 100%;
+            height: 82vh;
+            min-height: 540px;
+            max-height: 860px;
+            overflow: hidden;
+            background: #000000;
+            user-select: none;
+        }
+
+        .hero-slides-track {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.65s cubic-bezier(0.25, 1, 0.5, 1);
+            will-change: transform;
+        }
+
+        .hero-slide {
+            position: relative;
+            flex: 0 0 100%;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 0 24px 76px;
+            text-align: center;
+            color: var(--nike-white);
+            overflow: hidden;
+            background: #000000;
+        }
+
+        .hero-slide-media {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            z-index: 0;
+            filter: none;
+        }
+
+        /* Subtle bottom gradient for crisp text contrast */
+        .hero-slide::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                180deg,
+                rgba(0, 0, 0, 0) 45%,
+                rgba(0, 0, 0, 0.65) 100%
+            );
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .hero-slide-content {
+            position: relative;
+            z-index: 2;
+            max-width: 820px;
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity 0.55s ease 0.15s, transform 0.55s ease 0.15s;
+        }
+
+        .hero-slide.active .hero-slide-content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--nike-orange);
+            color: var(--nike-white);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 6px 18px;
+            border-radius: 100px;
+            margin-bottom: 16px;
+        }
+
+        .hero-slide-content h1,
+        .hero-slide-content h2 {
+            font-size: 72px;
+            font-weight: 900;
+            line-height: 0.96;
+            letter-spacing: -2.5px;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+            text-shadow: 0 4px 24px rgba(0, 0, 0, 0.45);
+        }
+
+        .hero-slide-content p {
+            font-size: 17px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.94);
+            margin-bottom: 26px;
+            line-height: 1.5;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-cta {
+            display: inline-block;
+            background: var(--nike-white);
+            color: var(--nike-black);
+            font-size: 16px;
+            font-weight: 600;
+            padding: 12px 32px;
+            border-radius: 30px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+            font-family: var(--nike-font);
+        }
+        .hero-cta:hover {
+            background: var(--nike-grey-200);
+            transform: scale(1.03);
+        }
+
+        /* Bottom-center Nike Dots */
+        .slider-dots {
+            position: absolute;
+            bottom: 26px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 4;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .slider-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(255, 255, 255, 0.45);
+            cursor: pointer;
+            padding: 0;
+            transition: all 0.25s ease;
+        }
+
+        .slider-dot:hover {
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .slider-dot.active {
+            background: var(--nike-white);
+            transform: scale(1.2);
+        }
+
+        /* Bottom-right Nike Circular Controls */
+        .slider-controls {
+            position: absolute;
+            bottom: 20px;
+            right: 36px;
+            z-index: 4;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .slider-ctrl-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(255, 255, 255, 0.88);
+            color: var(--nike-black);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+        }
+
+        .slider-ctrl-btn:hover {
+            background: var(--nike-white);
+            transform: scale(1.06);
+        }
+
+        .slider-ctrl-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* ===== COUNTDOWN TIMER ===== */
+        .countdown-section {
+            background: var(--nike-black);
+            color: var(--nike-white);
+            padding: 48px 24px;
+            text-align: center;
+        }
+        .countdown-label {
+            font-size: 14px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--nike-grey-300);
+            margin-bottom: 24px;
+            font-weight: 500;
+        }
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+        }
+        .countdown-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .countdown-number {
+            font-size: 56px;
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: -2px;
+        }
+        .countdown-unit {
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--nike-grey-500);
+            margin-top: 8px;
+            font-weight: 500;
+        }
+        .countdown-separator {
+            font-size: 56px;
+            font-weight: 300;
+            color: var(--nike-grey-500);
+            line-height: 1;
+        }
+
+        /* ===== GIVEAWAY SHOES GRID ===== */
+        .shoes-section {
+            padding: 80px 48px;
+            background: var(--nike-white);
+        }
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 40px;
+        }
+        .section-header h2 {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        .section-header .subtitle {
+            font-size: 16px;
+            color: var(--nike-grey-500);
+            margin-top: 4px;
+        }
+        .view-all {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--nike-black);
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .shoes-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .shoe-card {
+            background: var(--nike-grey-100);
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+        .shoe-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+        }
+        .shoe-card .badge {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background: var(--nike-orange);
+            color: white;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 4px 12px;
+            border-radius: 4px;
+            z-index: 2;
+        }
+        .shoe-card img {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s;
+        }
+        .shoe-card:hover img {
+            transform: scale(1.05);
+        }
+        .shoe-info {
+            padding: 16px 20px 20px;
+        }
+        .shoe-info .shoe-type {
+            font-size: 12px;
+            color: var(--nike-orange);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+        .shoe-info h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .shoe-info .shoe-desc {
+            font-size: 14px;
+            color: var(--nike-grey-500);
+            margin-bottom: 8px;
+        }
+        .shoe-info .shoe-price {
+            font-size: 16px;
+            font-weight: 600;
+        }
+        .shoe-info .shoe-price .original {
+            text-decoration: line-through;
+            color: var(--nike-grey-500);
+            font-weight: 400;
+            margin-left: 8px;
+        }
+        .shoe-info .free-tag {
+            display: inline-block;
+            background: var(--nike-green);
+            color: white;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 4px;
+            letter-spacing: 0.5px;
+        }
+
+        /* ===== HOW IT WORKS ===== */
+        .how-it-works {
+            padding: 80px 48px;
+            background: var(--nike-grey-100);
+        }
+        .how-it-works h2 {
+            text-align: center;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 56px;
+        }
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 48px;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+        .step {
+            text-align: center;
+        }
+        .step-number {
+            width: 56px;
+            height: 56px;
+            background: var(--nike-black);
+            color: var(--nike-white);
+            font-size: 22px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+        }
+        .step h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .step p {
+            font-size: 14px;
+            color: var(--nike-grey-500);
+            line-height: 1.6;
+        }
+
+        /* ===== FEATURED BANNER ===== */
+        .featured-banner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 500px;
+        }
+        .featured-banner .banner-image {
+            overflow: hidden;
+        }
+        .featured-banner .banner-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .featured-banner .banner-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 64px 80px;
+            background: var(--nike-black);
+            color: var(--nike-white);
+        }
+        .featured-banner .banner-content .tagline {
+            font-size: 12px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--nike-orange);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        .featured-banner .banner-content h2 {
+            font-size: 48px;
+            font-weight: 900;
+            line-height: 1.05;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+        .featured-banner .banner-content p {
+            font-size: 16px;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.6;
+            margin-bottom: 32px;
+        }
+        .featured-banner .banner-cta {
+            display: inline-flex;
+            align-self: flex-start;
+            background: var(--nike-white);
+            color: var(--nike-black);
+            font-size: 16px;
+            font-weight: 600;
+            padding: 14px 36px;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-family: var(--nike-font);
+        }
+        .featured-banner .banner-cta:hover {
+            background: var(--nike-grey-200);
+            transform: scale(1.03);
+        }
+
+        /* ===== CTA SECTION ===== */
+        .cta-section {
+            padding: 100px 48px;
+            text-align: center;
+            background: var(--nike-white);
+        }
+        .cta-section .swoosh-icon {
+            width: 64px;
+            height: 24px;
+            margin: 0 auto 24px;
+        }
+        .cta-section h2 {
+            font-size: 48px;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+        .cta-section p {
+            font-size: 16px;
+            color: var(--nike-grey-500);
+            max-width: 500px;
+            margin: 0 auto 32px;
+            line-height: 1.6;
+        }
+        .cta-btn {
+            display: inline-block;
+            background: var(--nike-black);
+            color: var(--nike-white);
+            font-size: 16px;
+            font-weight: 600;
+            padding: 16px 48px;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-family: var(--nike-font);
+        }
+        .cta-btn:hover {
+            background: var(--nike-grey-700);
+            transform: scale(1.03);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--nike-black);
+            color: var(--nike-white);
+            padding: 48px 48px 32px;
+        }
+        .footer-top {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+            margin-bottom: 40px;
+        }
+        .footer-col h4 {
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+        .footer-col ul {
+            list-style: none;
+        }
+        .footer-col li {
+            margin-bottom: 12px;
+        }
+        .footer-col a {
+            color: var(--nike-grey-500);
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.2s;
+        }
+        .footer-col a:hover {
+            color: var(--nike-white);
+        }
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .footer-bottom p {
+            font-size: 12px;
+            color: var(--nike-grey-500);
+        }
+        .footer-social {
+            display: flex;
+            gap: 16px;
+        }
+        .footer-social a {
+            width: 32px;
+            height: 32px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+        .footer-social a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        .footer-social svg {
+            width: 16px;
+            height: 16px;
+            fill: var(--nike-white);
+        }
+
+        /* ===== ANIMATIONS ===== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .shoes-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .hero-slide-content h1,
+            .hero-slide-content h2 {
+                font-size: 52px;
+            }
+            .featured-banner .banner-content h2 {
+                font-size: 36px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0 20px;
+            }
+            .nav-links {
+                display: none;
+            }
+            .hero-slider {
+                height: 72vh;
+                min-height: 460px;
+            }
+            .hero-slide {
+                padding-bottom: 72px;
+            }
+            .hero-slide-content h1,
+            .hero-slide-content h2 {
+                font-size: 38px;
+                letter-spacing: -1.5px;
+            }
+            .hero-slide-content p {
+                font-size: 15px;
+            }
+            .slider-controls {
+                right: 16px;
+                bottom: 16px;
+                gap: 8px;
+            }
+            .slider-ctrl-btn {
+                width: 34px;
+                height: 34px;
+            }
+            .shoes-section, .how-it-works, .cta-section {
+                padding: 48px 20px;
+            }
+            .shoes-grid {
+                grid-template-columns: 1fr;
+            }
+            .steps {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+            .featured-banner {
+                grid-template-columns: 1fr;
+            }
+            .featured-banner .banner-content {
+                padding: 40px 24px;
+            }
+            .countdown {
+                gap: 16px;
+            }
+            .countdown-number {
+                font-size: 36px;
+            }
+            .footer-top {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .cta-section h2 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOP PROMO BAR -->
+    <div class="promo-bar">
+        Free Shipping on Orders Over ₹7,999 · Exclusive Giveaway Live Now — <a href="signup.html">Enter Now</a>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="#" class="nike-logo">
+            <svg width="60" height="22" viewBox="0 0 192 192" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M168 69.7505L62.6877 114.422C53.9197 118.142 46.5437 119.998 40.5997 119.998C33.9117 119.998 29.0397 117.638 26.0477 112.926C22.1677 106.854 23.8637 97.0705 30.5197 86.7505C34.4717 80.7185 39.4957 75.1825 44.3917 69.8865C43.2397 71.7585 33.0717 88.6785 44.1917 96.6465C46.3917 98.2465 49.5197 99.0305 53.3677 99.0305C56.4557 99.0305 59.9997 98.5265 63.8957 97.5105L168 69.7505Z" fill="#111111"/>
+            </svg>
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="https://www.nike.com/in/w/new-releases-3n82y">New & Featured</a></li>
+            <li><a href="https://www.nike.com/in/men">Men</a></li>
+            <li><a href="https://www.nike.com/in/women">Women</a></li>
+            <li><a href="https://www.nike.com/in/kids">Kids</a></li>
+            <li><a href="#" class="active">Giveaway</a></li>
+            <li><a href="https://www.nike.com/in/w/sale-3yaep">Sale</a></li>
+        </ul>
+
+        <div class="nav-actions">
+            <div class="search-bar">
+                <svg class="nav-icon" viewBox="0 0 24 24"><path d="M21 21l-4.35-4.35M19 11a8 8 0 11-16 0 8 8 0 0116 0z" stroke="#111" stroke-width="2" fill="none"/></svg>
+                <form action="https://www.nike.com/in/w" method="GET" style="display:contents;">
+                    <input type="text" name="q" placeholder="Search" onkeydown="if(event.key==='Enter'){window.location.href='https://www.nike.com/in/w?q='+encodeURIComponent(this.value);event.preventDefault();}">
+                </form>
+            </div>
+            <svg class="nav-icon" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" stroke="#111" stroke-width="1.5" fill="none"/></svg>
+            <svg class="nav-icon" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0" stroke="#111" stroke-width="1.5" fill="none"/></svg>
+        </div>
+    </nav>
+
+    <!-- NIKE HERO VIDEO & BANNER SLIDER -->
+    <section class="hero-slider" id="heroSlider" aria-label="Featured Giveaway Carousel">
+        <div class="hero-slides-track" id="heroTrack">
+
+            <!-- Slide 1: Video 1 -->
+            <div class="hero-slide active">
+                <video
+                    class="hero-slide-media"
+                    src="Nike. Just Do It. Nike IN_files/Nike. Just Do It. Nike IN.mp4"
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                    preload="auto">
+                </video>
+                <div class="hero-slide-content">
+                    <span class="hero-badge">Sponsored by Nike Ind</span>
+                    <h1>Win Your Dream Kicks</h1>
+                    <p>Nike Exclusive Shoe Giveaway 2026. Limited entries, unlimited style.</p>
+                    <a href="signup.html" class="hero-cta">Enter the Giveaway</a>
+                </div>
+            </div>
+
+            <!-- Slide 2: Video 2 -->
+            <div class="hero-slide">
+                <video
+                    class="hero-slide-media"
+                    src="Nike. Just Do It. Nike IN_files/Nike. Just Do It. Nike IN_2.mp4"
+                    muted
+                    loop
+                    playsinline
+                    preload="auto">
+                </video>
+                <div class="hero-slide-content">
+                    <span class="hero-badge">Just Do It</span>
+                    <h2>Built For Speed</h2>
+                    <p>Exclusive pairs up for grabs — enter before the countdown hits zero.</p>
+                    <a href="signup.html" class="hero-cta">Claim Your Pair</a>
+                </div>
+            </div>
+
+            <!-- Slide 3: Lisa — Moon Shoe -->
+            <div class="hero-slide">
+                <img class="hero-slide-media" src="Nike. Just Do It. Nike IN_files/P1C_Dweb_2610.png" alt="Moon Shoe">
+                <div class="hero-slide-content">
+                    <span class="hero-badge">Limited Drop</span>
+                    <h2>Moon Shoe</h2>
+                    <p>Designed for life in orbit.</p>
+                    <a href="signup.html" class="hero-cta">Enter Now</a>
+                </div>
+            </div>
+
+            <!-- Slide 4: Gym / Training -->
+            <div class="hero-slide">
+                <img class="hero-slide-media" src="Nike. Just Do It. Nike IN_files/DT_Hybrid.png" alt="Nike Training & Gym">
+                <div class="hero-slide-content">
+                    <span class="hero-badge">Training &amp; Gym</span>
+                    <h2>Train Without Limits</h2>
+                    <p>Gear built for every rep, sprint, and session. Enter to win free.</p>
+                    <a href="signup.html" class="hero-cta">Join Now</a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Bottom-Center Pagination Dots -->
+        <div class="slider-dots" id="sliderDots" role="tablist" aria-label="Slide pagination">
+            <button type="button" class="slider-dot active" aria-label="Slide 1" data-slide="0"></button>
+            <button type="button" class="slider-dot" aria-label="Slide 2" data-slide="1"></button>
+            <button type="button" class="slider-dot" aria-label="Slide 3" data-slide="2"></button>
+            <button type="button" class="slider-dot" aria-label="Slide 4" data-slide="3"></button>
+        </div>
+
+        <!-- Bottom-Right Nike Circular Controls -->
+        <div class="slider-controls">
+            <button type="button" class="slider-ctrl-btn" id="sliderMuteToggle" aria-label="Unmute video" title="Mute / Unmute">
+                <svg id="mutedIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                    <line x1="23" y1="9" x2="17" y2="15"/>
+                    <line x1="17" y1="9" x2="23" y2="15"/>
+                </svg>
+                <svg id="unmutedIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                    <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                    <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+                </svg>
+            </button>
+            <button type="button" class="slider-ctrl-btn" id="sliderPlayPause" aria-label="Pause slideshow" title="Pause / Play">
+                <svg id="pauseIcon" viewBox="0 0 24 24" fill="currentColor">
+                    <rect x="6" y="5" width="4" height="14" rx="1"/>
+                    <rect x="14" y="5" width="4" height="14" rx="1"/>
+                </svg>
+                <svg id="playIcon" viewBox="0 0 24 24" fill="currentColor" style="display:none;">
+                    <polygon points="7,5 19,12 7,19"/>
+                </svg>
+            </button>
+            <button type="button" class="slider-ctrl-btn" id="sliderPrev" aria-label="Previous slide">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6"/>
+                </svg>
+            </button>
+            <button type="button" class="slider-ctrl-btn" id="sliderNext" aria-label="Next slide">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6"/>
+                </svg>
+            </button>
+        </div>
+    </section>
+
+    <!-- COUNTDOWN -->
+    <section class="countdown-section">
+        <div class="countdown-label">Giveaway Ends In</div>
+        <div class="countdown" id="countdown">
+            <div class="countdown-item">
+                <span class="countdown-number" id="days">07</span>
+                <span class="countdown-unit">Days</span>
+            </div>
+            <span class="countdown-separator">:</span>
+            <div class="countdown-item">
+                <span class="countdown-number" id="hours">14</span>
+                <span class="countdown-unit">Hours</span>
+            </div>
+            <span class="countdown-separator">:</span>
+            <div class="countdown-item">
+                <span class="countdown-number" id="minutes">32</span>
+                <span class="countdown-unit">Minutes</span>
+            </div>
+            <span class="countdown-separator">:</span>
+            <div class="countdown-item">
+                <span class="countdown-number" id="seconds">48</span>
+                <span class="countdown-unit">Seconds</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- GIVEAWAY SHOES -->
+    <section class="shoes-section fade-in">
+        <div class="section-header">
+            <div>
+                <h2>Shoes Up for Grabs</h2>
+                <p class="subtitle">6 exclusive pairs — each one could be yours</p>
+            </div>
+            <span class="view-all" onclick="window.location.href='signup.html'">Enter to Win →</span>
+        </div>
+        <div class="shoes-grid">
+            <!-- Shoe 1 -->
+            <div class="shoe-card" onclick="window.location.href='signup.html'">
+                <span class="badge">Giveaway</span>
+                <img src="Nike. Just Do It. Nike IN_files/094e755Nike-IQ0467-001_1.jpg" alt="Nike ZoomX Zegama Trail 2 GORE-TEX">
+                <div class="shoe-info">
+                    <div class="shoe-type">Running</div>
+                    <h3>Nike ZoomX Zegama Trail 2</h3>
+                    <div class="shoe-desc">Men's GORE-TEX Trail Shoes</div>
+                    <div class="shoe-price">
+                        <span class="free-tag">FREE</span>
+                        <span class="original">MRP: ₹16,995</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Shoe 2 -->
+            <div class="shoe-card" onclick="window.location.href='signup.html'">
+                <span class="badge">Giveaway</span>
+                <img src="Nike. Just Do It. Nike IN_files/094e755Nike-HQ7002-005_1.jpg" alt="Nike ZoomX Zegama Trail 2">
+                <div class="shoe-info">
+                    <div class="shoe-type">Running</div>
+                    <h3>Nike ZoomX Zegama Trail 2</h3>
+                    <div class="shoe-desc">Men's Trail Running Shoes</div>
+                    <div class="shoe-price">
+                        <span class="free-tag">FREE</span>
+                        <span class="original">MRP: ₹16,995</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Shoe 3 -->
+            <div class="shoe-card" onclick="window.location.href='signup.html'">
+                <span class="badge">Giveaway</span>
+                <img src="Nike. Just Do It. Nike IN_files/ad22b92Nike-IM3486-002_1.jpg" alt="Nike Zoom Vomero 5">
+                <div class="shoe-info">
+                    <div class="shoe-type">Lifestyle</div>
+                    <h3>Nike Zoom Vomero 5</h3>
+                    <div class="shoe-desc">Unisex Lifestyle Shoes</div>
+                    <div class="shoe-price">
+                        <span class="free-tag">FREE</span>
+                        <span class="original">MRP: ₹14,995</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Shoe 4 -->
+            <div class="shoe-card" onclick="window.location.href='signup.html'">
+                <span class="badge">Giveaway</span>
+                <img src="Nike. Just Do It. Nike IN_files/094e755Nike-IQ1085-001_1.jpg" alt="Nike Air Max Shoes">
+                <div class="shoe-info">
+                    <div class="shoe-type">Sportswear</div>
+                    <h3>Nike Air Max 95</h3>
+                    <div class="shoe-desc">Men's Shoes</div>
+                    <div class="shoe-price">
+                        <span class="free-tag">FREE</span>
+                        <span class="original">MRP: ₹15,695</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Shoe 5 -->
+            <div class="shoe-card" onclick="window.location.href='signup.html'">
+                <span class="badge">Giveaway</span>
+                <img src="Nike. Just Do It. Nike IN_files/094e755Nike-IX1931-063_1.jpg" alt="Nike Pegasus Trail 5">
+                <div class="shoe-info">
+                    <div class="shoe-type">Running</div>
+                    <h3>Nike Pegasus Trail 5</h3>
+                    <div class="shoe-desc">Men's Trail Running Shoes</div>
+                    <div class="shoe-price">
+                        <span class="free-tag">FREE</span>
+                        <span class="original">MRP: ₹13,995</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Shoe 6 -->
+            <div class="shoe-card" onclick="window.location.href='signup.html'">
+                <span class="badge">Giveaway</span>
+                <img src="Nike. Just Do It. Nike IN_files/be65e98Nike-IX1937-063_1.jpg" alt="Nike Pegasus Trail 5 GORE-TEX">
+                <div class="shoe-info">
+                    <div class="shoe-type">Running</div>
+                    <h3>Nike Pegasus Trail 5 GTX</h3>
+                    <div class="shoe-desc">Men's Waterproof Trail Running</div>
+                    <div class="shoe-price">
+                        <span class="free-tag">FREE</span>
+                        <span class="original">MRP: ₹15,995</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="how-it-works fade-in">
+        <h2>How It Works</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Sign Up</h3>
+                <p>Enter your Instagram username, invite code, and unique access key to register for the giveaway.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Share & Earn</h3>
+                <p>Share your unique invite link with friends. More referrals mean higher chances of winning.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Win Big</h3>
+                <p>Winners are selected and notified via Instagram DM. Free shoes, shipped to your door.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURED BANNER -->
+    <section class="featured-banner fade-in">
+        <div class="banner-image">
+            <img src="Nike. Just Do It. Nike IN_files/P1C_Dweb_2610.png" alt="Nike Sportswear">
+        </div>
+        <div class="banner-content">
+            <div class="tagline">Nike Exclusive</div>
+            <h2>Not Just A Giveaway.<br>It's A Movement.</h2>
+            <p>Be part of something bigger. Join the Nike community, connect with fellow sneakerheads, and get rewarded just for showing up. Because at Nike, everyone deserves to win.</p>
+            <a href="signup.html" class="banner-cta">Join Now</a>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="cta-section fade-in">
+        <div class="swoosh-icon">
+            <svg viewBox="0 0 192 192" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M168 69.7505L62.6877 114.422C53.9197 118.142 46.5437 119.998 40.5997 119.998C33.9117 119.998 29.0397 117.638 26.0477 112.926C22.1677 106.854 23.8637 97.0705 30.5197 86.7505C34.4717 80.7185 39.4957 75.1825 44.3917 69.8865C43.2397 71.7585 33.0717 88.6785 44.1917 96.6465C46.3917 98.2465 49.5197 99.0305 53.3677 99.0305C56.4557 99.0305 59.9997 98.5265 63.8957 97.5105L168 69.7505Z" fill="#111111"/>
+            </svg>
+        </div>
+        <h2>Don't Miss Out.<br>Just Do It.</h2>
+        <p>Only a limited number of entries are available. Once they're gone, they're gone. Secure your spot now.</p>
+        <a href="signup.html" class="cta-btn">Enter the Giveaway</a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="footer-col">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="#">Gift Cards</a></li>
+                    <li><a href="#">Find a Store</a></li>
+                    <li><a href="#">Nike Journal</a></li>
+                    <li><a href="#">Become a Member</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Help</h4>
+                <ul>
+                    <li><a href="#">Get Help</a></li>
+                    <li><a href="#">Order Status</a></li>
+                    <li><a href="#">Returns</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#">About Nike</a></li>
+                    <li><a href="#">News</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Investors</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Promotions & Discounts</h4>
+                <ul>
+                    <li><a href="#">Student</a></li>
+                    <li><a href="#">Military</a></li>
+                    <li><a href="#">Teacher</a></li>
+                    <li><a href="#">First Responders</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Nike, Inc. All Rights Reserved. · <a href="#" style="color:var(--nike-grey-500)">Privacy Policy</a> · <a href="#" style="color:var(--nike-grey-500)">Terms of Use</a></p>
+            <div class="footer-social">
+                <a href="#"><svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 01-3.14 1.53A4.48 4.48 0 0022.43.36a9 9 0 01-2.83 1.1A4.52 4.52 0 0012 7.53v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg></a>
+                <a href="#"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+                <a href="#"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg></a>
+                <a href="#"><svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.4 19.6C5.12 20 12 20 12 20s6.88 0 8.6-.46a2.78 2.78 0 001.94-2A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#fff"/></svg></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ===== NIKE HERO VIDEO & BANNER SLIDER =====
+        (function () {
+            const slider = document.getElementById('heroSlider');
+            const track = document.getElementById('heroTrack');
+            const slides = Array.from(track.querySelectorAll('.hero-slide'));
+            const dots = Array.from(document.querySelectorAll('.slider-dot'));
+            const prevBtn = document.getElementById('sliderPrev');
+            const nextBtn = document.getElementById('sliderNext');
+            const playPauseBtn = document.getElementById('sliderPlayPause');
+            const pauseIcon = document.getElementById('pauseIcon');
+            const playIcon = document.getElementById('playIcon');
+            const muteToggleBtn = document.getElementById('sliderMuteToggle');
+            const mutedIcon = document.getElementById('mutedIcon');
+            const unmutedIcon = document.getElementById('unmutedIcon');
+
+            let currentIndex = 0;
+            let isPlaying = true;
+            let isMuted = true;
+            let autoTimer = null;
+            const slideCount = slides.length;
+
+            function syncVideos() {
+                slides.forEach((slide, idx) => {
+                    const video = slide.querySelector('video');
+                    if (!video) return;
+
+                    video.muted = isMuted;
+
+                    if (idx === currentIndex && isPlaying) {
+                        const playPromise = video.play();
+                        if (playPromise !== undefined) {
+                            playPromise.catch(() => {});
+                        }
+                    } else {
+                        video.pause();
+                    }
+                });
+
+                const activeVideo = slides[currentIndex].querySelector('video');
+                muteToggleBtn.style.display = activeVideo ? 'flex' : 'none';
+            }
+
+            function goToSlide(index) {
+                currentIndex = (index + slideCount) % slideCount;
+                track.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+                slides.forEach((slide, idx) => {
+                    slide.classList.toggle('active', idx === currentIndex);
+                });
+                dots.forEach((dot, idx) => {
+                    dot.classList.toggle('active', idx === currentIndex);
+                });
+
+                syncVideos();
+            }
+
+            function startAutoPlay() {
+                stopAutoPlay();
+                if (!isPlaying) return;
+                autoTimer = setInterval(() => {
+                    goToSlide(currentIndex + 1);
+                }, 7000);
+            }
+
+            function stopAutoPlay() {
+                if (autoTimer) {
+                    clearInterval(autoTimer);
+                    autoTimer = null;
+                }
+            }
+
+            prevBtn.addEventListener('click', () => {
+                goToSlide(currentIndex - 1);
+                startAutoPlay();
+            });
+
+            nextBtn.addEventListener('click', () => {
+                goToSlide(currentIndex + 1);
+                startAutoPlay();
+            });
+
+            dots.forEach(dot => {
+                dot.addEventListener('click', () => {
+                    const target = parseInt(dot.getAttribute('data-slide'), 10);
+                    goToSlide(target);
+                    startAutoPlay();
+                });
+            });
+
+            playPauseBtn.addEventListener('click', () => {
+                isPlaying = !isPlaying;
+                pauseIcon.style.display = isPlaying ? 'block' : 'none';
+                playIcon.style.display = isPlaying ? 'none' : 'block';
+                playPauseBtn.setAttribute('aria-label', isPlaying ? 'Pause slideshow' : 'Play slideshow');
+
+                syncVideos();
+                if (isPlaying) {
+                    startAutoPlay();
+                } else {
+                    stopAutoPlay();
+                }
+            });
+
+            muteToggleBtn.addEventListener('click', () => {
+                isMuted = !isMuted;
+                mutedIcon.style.display = isMuted ? 'block' : 'none';
+                unmutedIcon.style.display = isMuted ? 'none' : 'block';
+                muteToggleBtn.setAttribute('aria-label', isMuted ? 'Unmute video' : 'Mute video');
+                syncVideos();
+            });
+
+            // Touch Swipe Support
+            let startX = 0;
+            let isDragging = false;
+
+            slider.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+                isDragging = true;
+            }, { passive: true });
+
+            slider.addEventListener('touchend', (e) => {
+                if (!isDragging) return;
+                isDragging = false;
+                const diff = startX - e.changedTouches[0].clientX;
+                if (Math.abs(diff) > 45) {
+                    goToSlide(diff > 0 ? currentIndex + 1 : currentIndex - 1);
+                    startAutoPlay();
+                }
+            });
+
+            // Keyboard Navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') {
+                    goToSlide(currentIndex - 1);
+                    startAutoPlay();
+                } else if (e.key === 'ArrowRight') {
+                    goToSlide(currentIndex + 1);
+                    startAutoPlay();
+                }
+            });
+
+            syncVideos();
+            startAutoPlay();
+        })();
+
+        // ===== COUNTDOWN TIMER =====
+        const endDate = new Date();
+        endDate.setDate(endDate.getDate() + 7);
+        endDate.setHours(23, 59, 59, 999);
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = endDate.getTime() - now;
+
+            if (distance < 0) {
+                document.getElementById('days').textContent = '00';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // ===== SCROLL ANIMATIONS =====
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html> 

